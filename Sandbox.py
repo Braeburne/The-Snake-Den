@@ -1,19 +1,11 @@
 import queue
 
-q = queue.Queue()
+pq = queue.PriorityQueue()
 
-q.put(1)    # enqueue 1
-q.put(2)    # enqueue 2
-q.put(3)    # enqueue 3
+pq.put((3, 'task 1'))   # priority 3
+pq.put((1, 'task 2'))   # priority 1
+pq.put((2, 'task 3'))   # priority 2
 
-front = q.get()  # dequeue 1 (first in)
-print(front)     # prints 1
-
-front = q.get()  # dequeue 2
-print(front)     # prints 2
-
-front = q.get()  # dequeue 3
-print(front)     # prints 3
-
-if q.empty():
-    print("queue is now empty.")
+while not pq.empty():
+    priority, task = pq.get()
+    print(f'Processing task: {task} with priority {priority}')

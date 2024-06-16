@@ -62,7 +62,7 @@ q = queue.Queue()
 
 ## Operations
 ### Notes
-The stack data structure operations are known colloqiually as the following across most programming languages:
+The queue data structure operations are known colloqiually as the following across most programming languages:
 
 (1) Enqueue - adding an element to the end of the queue. This method is implemented as put() in the `queue.Queue` class in the `queue` module in Python.
 
