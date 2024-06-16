@@ -1,4 +1,4 @@
-# Stacks in Python
+# 💵Stacks in Python
 ## Overview
 ### Attributes
 Entity Type: Data Structure
@@ -9,7 +9,65 @@ Entity Type: Data Structure
 (2) Follows Last In, First Out (LIFO) Principle
 
 ### Usages
-(1) Backtracking & Tracking State...
+(1) **Backtracking & Tracking State**
+- *Functional Use:* Storing previous states to backtrack through choices.
+- *Applications:* Solving puzzles (like Sudoku or N-Queens problem), pathfinding algorithms.
+- *Real-World Examples:* Puzzle-solving algorithms in games like Sudoku solvers, AI decision-making in chess engines (e.g., Stockfish).
+
+(2) **Recursive Function Calls**
+- *Functional Use:* Storing function call contexts and local variables.
+- *Applications:* Recursive algorithms such as factorial calculation, tree traversal.
+- *Real-World Examples:* Compiler implementations (e.g., handling function calls and variable scopes in programming languages like Python, Java).
+
+(3) **Expression Evaluation and Syntax Parsing**
+- *Functional Use:* Evaluating mathematical expressions, parsing languages.
+- *Applications:* Arithmetic operations (e.g., infix to postfix conversion), parsing JSON/XML data.
+- *Real-World Examples:* Programming language interpreters and compilers (e.g., Python interpreter, C++ compiler).
+
+(4) **Depth-First Search (DFS)**
+- *Functional Use:* Traversing graphs or trees depth-wise.
+- *Applications:* Finding connected components, cycle detection in graphs.
+- *Real-World Examples:* Maze solving algorithms, network routing algorithms.
+
+(5) **Undo Mechanisms in Editors**
+- *Functional Use:* Storing previous states of documents or actions.
+- *Applications:* Storing previous states of documents or actions.
+- *Real-World Examples:* Text editors like Sublime Text or VSCode, IDEs like Visual Studio.
+
+(6) **Function Call Stack in Programming**
+- *Functional Use:* Managing function calls and local variables during program execution.
+- *Applications:* Handling nested function calls, managing memory in recursive algorithms.
+- *Real-World Examples:* Operating systems for managing process execution (e.g., Linux kernel), web browsers for managing web page rendering and execution contexts.
+
+(7) **Browser History Management**
+- *Functional Use:* Storing previously visited URLs to facilitate backward navigation.
+- *Applications:* Navigating through visited web pages, implementing the back button functionality.
+- *Real-World Examples:* Web browsers like Chrome, Firefox, Safari.
+
+(8) **Call Stack in Operating Systems**
+- *Functional Use:* Managing system resources and function calls in kernel mode.
+- *Applications:* Handling interrupts, managing system calls.
+- *Real-World Examples:* Operating systems like Linux, Windows, macOS.
+
+(9) **Task Management in Operating Systems**
+- *Functional Use:* Managing tasks and processes in a multitasking environment.
+- *Applications:* Process scheduling, handling task priorities.
+- *Real-World Examples:* Task managers in operating systems (e.g., Task Manager in Windows, Activity Monitor in macOS).
+
+(10) **Postfix Evaluation in Calculators**
+- *Functional Use:* Evaluating mathematical expressions in postfix notation.
+- *Applications:* Performing arithmetic operations (e.g., addition, multiplication) based on user input.
+- *Real-World Examples:* Scientific calculators, programming calculators.
+
+(11) **Transaction Management in Databases**
+- *Functional Use:* Managing operations that can be rolled back in case of failure.
+- *Applications:* Committing changes to a database, rolling back transactions.
+- *Real-World Examples:* Database management systems (e.g., PostgreSQL, MySQL).
+
+(12) **Component Rendering in GUI Systems**
+- *Functional Use:* Storing the hierarchy of components to render in a GUI.
+- *Applications:* Drawing components (e.g., buttons, menus) in a windowing system.
+- *Real-World Examples:* Graphical user interfaces (e.g., Qt framework, GTK+).
 
 ### Performance
 The operations append() and pop() on a list in Python are both O(1) on average, making stacks efficient for most applications.

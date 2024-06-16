@@ -1,45 +1,19 @@
-fruit_basket = []
+import queue
 
-def CheckFruitBasket():
-    for fruit in fruit_basket:
-        print(fruit)
+q = queue.Queue()
 
-def isFruitBasketEmpty():
-    if not fruit_basket:
-        print("Fruit basket is empty.")
+q.put(1)    # enqueue 1
+q.put(2)    # enqueue 2
+q.put(3)    # enqueue 3
 
-print("loading fruit basket...")
-fruit_basket.append("apple")       # push an apple
-fruit_basket.append("banana")      # push a banana
-fruit_basket.append("pear")        # push a pear
-CheckFruitBasket()
-isFruitBasketEmpty()
+front = q.get()  # dequeue 1 (first in)
+print(front)     # prints 1
 
-print("\npeeking at the top of the fruit basket...")
-peek = fruit_basket[-1]
-print(peek)
+front = q.get()  # dequeue 2
+print(front)     # prints 2
 
-print("\nremoving pear...")
-fruit_basket.pop()
-CheckFruitBasket()
-isFruitBasketEmpty()
+front = q.get()  # dequeue 3
+print(front)     # prints 3
 
-print("\npeeking at the top of the fruit basket...")
-peek = fruit_basket[-1]
-print(peek)
-
-print("\nremoving banana...")
-fruit_basket.pop()
-CheckFruitBasket()
-isFruitBasketEmpty()
-
-print("\npeeking at the top of the fruit basket...")
-peek = fruit_basket[-1]
-print(peek)
-
-print("\nremoving apple...")
-fruit_basket.pop()
-CheckFruitBasket()
-
-print("\nchecking if fruit basket is empty...")
-isFruitBasketEmpty()
+if q.empty():
+    print("queue is now empty.")
