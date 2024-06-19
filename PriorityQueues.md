@@ -12,7 +12,7 @@ Entity Type: Data Structure
 
 (4) Follows First In, First Out (FIFO) principle.
 
-### Usages
+### Real-World Applications
 (1) **Task Scheduling with Priorities**
 - *Functional Use:* Managing tasks where some tasks have higher priority than others.
 - *Applications:* Job scheduling in operating systems, task management in real-time systems.    
@@ -66,9 +66,9 @@ pq = queue.PriorityQueue()
 
 ## Operations
 ### Notes
-The priority queue data structure operations are known colloqiually as the following across most programming languages:
+The priority queue data structure operations are known colloquially as the following across most programming languages:
 
-(1) Insert - inserting an element with a priority. This method is implemented as put() in the `queue.PriorityQueue` class in the `queue` module in Python. It takes two parameters, the priority and the object itself.
+(1) Insert - inserting an element with a priority. This method is implemented as put(priority, item) in the `queue.PriorityQueue` class in the `queue` module in Python. It takes two parameters, the priority and the object itself.
 
 (2) Remove - remove and return the element with the highest priority. This method is implemented as get() in the `queue.PriorityQueue` class in the `queue` module in Python.
 

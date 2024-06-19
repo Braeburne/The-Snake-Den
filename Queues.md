@@ -8,7 +8,7 @@ Entity Type: Data Structure
 
 (2) Follows First In, First Out (FIFO) Principle
 
-### Usages
+### Real-World Applications
 (1) **Job Scheduling**
 - *Functional Use:* Managing tasks in the order they are received.
 - *Applications:* ask scheduling in operating systems, handling print jobs in a printer queue.
@@ -62,7 +62,7 @@ q = queue.Queue()
 
 ## Operations
 ### Notes
-The queue data structure operations are known colloqiually as the following across most programming languages:
+The queue data structure operations are known colloquially as the following across most programming languages:
 
 (1) Enqueue - adding an element to the end of the queue. This method is implemented as put() in the `queue.Queue` class in the `queue` module in Python.
 

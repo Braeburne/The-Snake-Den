@@ -8,7 +8,7 @@ Entity Type: Data Structure
 
 (2) Follows Last In, First Out (LIFO) Principle
 
-### Usages
+### Real-World Applications
 (1) **Backtracking & Tracking State**
 - *Functional Use:* Storing previous states to backtrack through choices.
 - *Applications:* Solving puzzles (like Sudoku or N-Queens problem), pathfinding algorithms.
@@ -79,7 +79,7 @@ stack = []
 ```
 ## Operations
 ### Notes
-The stack data structure operations are known colloqiually as the following across most programming languages:
+The stack data structure operations are known colloquially as the following across most programming languages:
 
 (1) Push - usually called "push" because one would push things onto the stack if they wanted to put something on the stack. The method is implemented as "append" in Python via the list data structure. This is our "add."
 
