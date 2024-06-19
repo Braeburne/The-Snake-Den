@@ -662,6 +662,11 @@ DJBX33A (Daniel J. Bernstein's Hash Function)
     Creator: Daniel J. Bernstein
     Industry Use: Simple and fast hash function, used in various applications where speed and simplicity are prioritized.
 
+bcrypt
+
+    Creator: Niels Provos and David Mazieres
+    Usage: Specifically designed for password hashing. It incorporates a salt (random data added to each password before hashing) and a cost factor to slow down hashing to resist brute-force attacks.
+
 A myriad of these hash functions occupy different niches in the industry, such as the following:
 
 - **Cryptographic Applications:** SHA-256, SHA-1 (for legacy support), and MD5 (for non-critical applications).
@@ -670,4 +675,173 @@ A myriad of these hash functions occupy different niches in the industry, such a
 
 - **Performance Critical Systems:** MurmurHash, xxHash, CityHash, and SipHash in distributed systems, databases, and large-scale data processing.
 
-- **Security:** All kinds of hash functions play a critical role in secure communications, digital signatures, and password storage (using salted hashes).
+- **Security:** SHA-256 and bcrypt, among others, play a critical role in secure communications, digital signatures, and password storage (using salted hashes).
+
+### Python's Hash Function
+
+We spent a lot of time dissecting our custom hash function that was built.
+
+```python
+def _hash(self, key): 
+  return hash(key) % self.size
+```
+
+Embedded in that function is a key functionality for all of this to work - Python's implementation of the `hash()` function. Python's very own hash function is the key to our hash function working. The Python `hash()` function does the hashing for us. Is the Python `hash()` function a more great hash function that our own custom hash function? 
+
+Yes.
+
+> "But why?"
+
+What.
+
+A.
+
+Great.
+
+Question. 👹
+
+Let's compare the two.
+
+<ins> **Python's Built-in Hash Function**
+
+Python's built-in `hash()` function is used internally for hashing various types of objects. It has the following characteristics:
+1. Deterministic: Produces the same hash value for the same input across different Python sessions and platforms.
+2. Implemented in C: Efficiently handles different data types and objects within Python's runtime environment.
+3. Collision Handling: Uses techniques to mitigate collisions, although specifics are not exposed directly in Python's standard library functions.
+4. Optimized: Designed to provide good distribution properties suitable for general-purpose use within Python's data structures like dictionaries (dict) and sets (set).
+
+**Example Usage:**
+```python
+# Using Python's built-in hash function
+print(hash('hello'))  # Output: -5788889393496466357
+print(hash((1, 2, 3)))  # Output: 2528502973977326415
+```
+
+<ins> **Our Custom Hash Function**
+
+The hash function `hash(key) % self.size` is a simplified version often used for basic demonstrations or simple implementations. Here's how it compares:
+- Implementation: Computes the hash using Python's built-in hash() function and then applies modulo self.size to fit within a specific range.
+- Simplicity: Easy to understand and implement, suitable for educational purposes or quick prototypes.
+- Limitations:
+  - Uniformity: May not provide optimal distribution across all possible inputs compared to more advanced hash functions.
+  - Collision Handling: Lacks mechanisms to handle collisions beyond simple modulo arithmetic.
+
+**Example Usage:**
+```python
+# Example of the hash function hash(key) % self.size
+class MyHashTable:
+    def __init__(self, size=100):
+        self.size = size
+        self.buckets = [[] for _ in range(size)]
+    
+    def _hash(self, key):
+        return hash(key) % self.size
+
+# Creating an instance of MyHashTable and using the hash function
+ht = MyHashTable()
+print(ht._hash('hello'))  # Output: 93
+print(ht._hash((1, 2, 3)))  # Output: 15
+```
+
+<ins> **Comparison**
+- **Python's Built-in Hash Function:** Provides a robust, optimized implementation suitable for general-purpose use, including handling various data types and optimizing for performance.
+- **Our Custom Hash Function:** Simplified and lacks advanced features like collision handling and optimized distribution, making it more suitable for basic applications or educational purposes.
+
+In summary, while both functions involve hashing, Python's built-in hash function is more comprehensive, optimized, and suitable for diverse applications within Python's ecosystem. The custom hash function `hash(key) % self.size` is simpler and serves specific purposes such as educational demonstrations or basic implementations where performance and advanced features are not critical.
+
+Alright, alright. I already know what you're thinking.
+
+> "Nah, bro. I wanna SEE IT. LET ME SEE THE PYTHON IMPLEMENTATION ALREADY BRO."
+
+Okay. [Bon Appétit.](https://docs.python.org/3/library/functions.html#hash)
+
+...
+
+Oh you wanted to see the "code" code? Pffft, go find that yourself. I have no clue where the heck that is. What is being offered here is a high level overview on the difference between the two functions. Feel free to dig into both of them yourself on your own. The best I could offer is this.
+
+### Python's "Prayer In C"
+
+The `hash()` function in Python is a built-in function that returns the hash value of an object. It's implemented in C and is part of the Python standard library. Here's how you can use and see the implementation details of the `hash()` function:
+
+<ins> **Using the `hash()` Function**
+
+In Python, you can use the hash() function directly on objects to obtain their hash values. Here are some examples:
+
+```python
+# Hashing integers
+print(hash(42))     # Output: 42
+print(hash(-1))     # Output: -2
+
+# Hashing strings
+print(hash('hello'))    # Output: -9078027547281699472
+print(hash('world'))    # Output: 8281751708886334716
+
+# Hashing tuples (immutable objects)
+print(hash((1, 2, 3)))  # Output: 2528502973977326415
+print(hash(('a', 'b'))) # Output: 4046949244589098167
+
+# Hashing floats (note: hash() is not consistent across Python sessions for floats)
+print(hash(3.14))   # Output varies depending on Python version and platform
+```
+
+<ins> **Implementation Details**
+
+The actual C implementation of the `hash()` function in Python can be found in the Python source code. Since Python is an open-source project, you can inspect the implementation on platforms like GitHub. Here’s a simplified version of what you might find:
+
+```c
+static long
+string_hash(PyStringObject *a)
+{
+    register Py_ssize_t len;
+    register unsigned char *p;
+    register long x;
+
+    if (a->ob_shash != -1)
+        return a->ob_shash;
+    len = Py_SIZE(a);
+    p = (unsigned char *) a->ob_sval;
+    x = *p << 7;
+    while (--len >= 0)
+        x = (1000003*x) ^ *p++;
+    x ^= Py_SIZE(a);
+    if (x == -1)
+        x = -2;
+    a->ob_shash = x;
+    return x;
+}
+
+long
+_Py_HashPointer(void *p)
+{
+    return (long)p >> SHIFT;
+}
+
+long
+_Py_HashDouble(double v)
+{
+    /* Hash a floating-point number v; the current scheme just xors all the
+     * bytes that represent the number. */
+    long vv = *(long *)&v;
+    return vv ^ (vv >> SHIFT);
+}
+
+long
+_Py_HashLong(PyLongObject *v)
+{
+    /* XXX Should apply the new hash algorithm from Python 3.x. */
+    Py_ssize_t i;
+    long x;
+    x = v->ob_digit[0];
+    for (i = 1; i < Py_SIZE(v); i++) {
+        x = ((1000003 * x) & ((1 << SHIFT) - 1)) ^ v->ob_digit[i];
+    }
+    x = x * v->ob_size;
+    if (x == -1)
+        x = -2;
+    return x;
+}
+```
+
+This C code is a simplified version of how hashing is implemented in Python. It includes specific functions for hashing strings, pointers, doubles (floating-point numbers), and long integers. The actual implementation is more complex, with additional checks and optimizations for different types and object states.
+
+If you're interested in the full implementation, again. Go explore the Python source code repository on GitHub or visit the official Python documentation for more details.
