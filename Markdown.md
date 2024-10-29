@@ -122,11 +122,6 @@ Apparently, indenting a line of text [x] times has the same effect as well.
         I try all the time,
     in this institution
 
-Now this text copied straight from my Hash.md file is a strange case.
-
-
-
-
 **Actual code can be formatted with that language's syntax highlighting if you specify the short-hand name of that language right after the first set of backticks. For example, Python code can be identified as follows:**
 
 \`\`\`python

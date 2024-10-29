@@ -1,46 +1,24 @@
-class MyHashTable:
-    def __init__(self, size=100):
-        self.size = size  # Initial size of the hash table
-        self.buckets = [[] for _ in range(size)]  # List of empty lists (buckets)
+import timeit
 
-    def _hash(self, key):
-        return hash(key) % self.size
+# Measure execution time of binary_search
+setup = '''
+import random
+import math
 
-    def insert(self, key, value):
-        index = self._hash(key)
-        for i, (k, v) in enumerate(self.buckets[index]):
-            if k == key:
-                self.buckets[index][i] = (key, value)  # Update value if key exists
-                return
-        self.buckets[index].append((key, value))  # Add new key-value pair if key doesn't exist
+def binary_search(array, target, start_index, end_index):
+    if start_index > end_index:
+        return "binary search not valid"
+    middle = math.floor((start_index + end_index) / 2)
+    if array[middle] == target:
+        return f"Target found at index {middle}"
+    if array[middle] > target:
+        return binary_search(array, target, start_index, middle - 1)
+    if array[middle] < target:
+        return binary_search(array, target, middle + 1, end_index)
 
-    def get(self, key):
-        index = self._hash(key)
-        for k, v in self.buckets[index]:
-            if k == key:
-                return v  # Return value if key is found
-        raise KeyError(f'Key {key} not found')  # Raise KeyError if key is not found
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+target = random.randint(1, 10)
+'''
 
-    def delete(self, key):
-        index = self._hash(key)
-        for i, (k, v) in enumerate(self.buckets[index]):
-            if k == key:
-                del self.buckets[index][i]  # Delete key-value pair if key is found
-                return
-        raise KeyError(f'Key {key} not found')  # Raise KeyError if key is not found
-
-# Create an instance of MyHashTable
-ht = MyHashTable()
-
-# Insert key-value pairs
-ht.insert('a', 1)
-ht.insert('b', 2)
-ht.insert('c', 3)
-
-# Retrieve values
-print(ht.get('a'))  # Output: 1
-print(ht.get('b'))  # Output: 2
-
-# Delete a key-value pair
-ht.delete('b')
-print(ht.get('b'))  # Raises KeyError: 'Key b not found'
+stmt = 'binary_search(arr, target, 0, len(arr) - 1)'
+print(timeit.timeit(stmt, setup=setup, number=1000))
