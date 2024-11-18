@@ -69,11 +69,16 @@ def module_1():
 def module_2():
     # 2. Control Structures
     print("\n## Section 2 | Control Structures ##")
+    nums = [1, 2, 3, 4, 5]
 
-    # 1. Basic For Loop
-    print("Basic For Loop:")
-    for i in range(1, 6):
+    # 0. Full Iteration Full Loop
+    for i in nums:
         print(f"Loop iteration {i}")
+
+    # 1. Range-based For Loop
+    print("\nRanged-based For Loop:")
+    for i in range(1, 6):
+        print(f"Ranged-based Loop iteration {i}")
 
     # 2. While Loop
     print("\nWhile Loop:")
