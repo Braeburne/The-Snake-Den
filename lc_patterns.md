@@ -600,5 +600,6 @@ graph = {
 visited = set()
 print("DFS Traversal (Recursive): ", end="")
 dfs_recursive(graph, 1, visited)
+```
 
 ## 12. Breadth-First Search (BFS)
