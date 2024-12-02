@@ -1,3 +1,127 @@
+# Question: "What is the penultimate workflow during a coding interview?"
+
+# Penultimate Coding Interview Workflow
+
+Here is an outline of a step-by-step workflow to excel in coding interviews. Following these steps ensures clarity, efficiency, and a structured approach to problem-solving.
+
+---
+
+## Workflow Steps
+
+### 1. **Understand the Problem**
+- **Goal**: Ensure you have a crystal-clear understanding of the problem.
+- **Actions**:
+  - Ask clarifying questions to remove ambiguity.
+  - Restate the problem in your own words.
+  - Confirm the input and output formats.
+- **Example**:  
+  "So, we are given an array of integers, and we need to return the length of the longest increasing subsequence."
+
+---
+
+### 2. **Identify Constraints**
+- **Goal**: Understand the limits and expectations for the solution.
+- **Actions**:
+  - Ask about input size and type (e.g., size of the array, negative numbers allowed?).
+  - Inquire about performance requirements (e.g., time complexity, space constraints).
+  - Check if additional libraries or certain methods are restricted.
+- **Example**:  
+  "Can I assume the input array will fit in memory? Do we need an optimal solution?"
+
+---
+
+### 3. **Identify Edge Cases**
+- **Goal**: Consider special cases to ensure the solution is robust.
+- **Actions**:
+  - Discuss edge cases explicitly with the interviewer.
+  - Think of scenarios like empty input, single element, maximum/minimum values, and duplicate data.
+- **Example**:  
+  "What should the output be if the input array is empty? How about if all the numbers are the same?"
+
+---
+
+### 4. **Explore and Brainstorm Solutions**
+- **Goal**: Discuss potential approaches and ensure alignment before coding.
+- **Actions**:
+  - Identify brute-force, optimized, and alternative approaches.
+  - Discuss trade-offs for each approach in terms of time and space complexity.
+  - Use high-level pseudocode or sketches to explain your ideas.
+- **Example**:  
+  "A brute-force approach would involve checking all subsequences, which is \(O(2^n)\). A better solution uses dynamic programming for $O(n^2)$, and we could optimize further to $O(n \log n)$ using binary search."
+
+---
+
+### 5. **Plan Your Solution**
+- **Goal**: Outline the structure of your code before diving in.
+- **Actions**:
+  - Break the problem into smaller sub-problems.
+  - Identify helper functions or reusable logic.
+  - Decide on the data structures you’ll use.
+- **Example**:  
+  "I’ll use a binary search tree to store the longest increasing subsequences dynamically."
+
+---
+
+### 6. **Write Clean Code**
+- **Goal**: Implement the solution while adhering to coding best practices.
+- **Actions**:
+  - Code incrementally; test edge cases as you go.
+  - Use meaningful variable names and comments.
+  - Keep the code modular and avoid hardcoding values.
+- **Example**:  
+  Start with the helper function to handle edge cases, then build the main logic step-by-step.
+
+---
+
+### 7. **Test the Solution**
+- **Goal**: Validate your code against normal, edge, and stress cases.
+- **Actions**:
+  - Write out several test cases (both simple and complex).
+  - Walk through your code with these test cases, simulating execution.
+  - Fix bugs or inefficiencies as needed.
+- **Example**:  
+  Test input like `[10, 9, 2, 5, 3, 7, 101, 18]`, edge cases like `[]`, and large inputs like an array of 10,000 integers.
+
+---
+
+### 8. **Optimize if Necessary**
+- **Goal**: Improve your solution based on time/space trade-offs if constraints allow.
+- **Actions**:
+  - Discuss potential optimizations with the interviewer.
+  - Simplify redundant logic or replace inefficient data structures.
+- **Example**:  
+  "If we use a Fenwick Tree, we can further reduce the complexity from $O(n^2)$ to $O(n \log n)$."
+
+---
+
+### 9. **Communicate Throughout**
+- **Goal**: Keep the interviewer engaged and show your thought process.
+- **Actions**:
+  - Narrate each step as you think, brainstorm, plan, and code.
+  - Be explicit about assumptions, trade-offs, and limitations.
+
+---
+
+### 10. **Wrap Up and Reflect**
+- **Goal**: Conclude with a summary of your solution and insights.
+- **Actions**:
+  - Recap the problem, solution, and complexities.
+  - Mention any additional features or edge cases you’d handle with more time.
+- **Example**:  
+  "The solution is $O(n \log n)$ in time and $(O(n))$ in space. If we had more time, I’d add more robust error handling for invalid inputs."
+
+---
+
+## Key Notes
+- **Combine Edge Cases and Constraints**: Address constraints early on while also considering edge cases (if possible).
+- **Emphasize Planning and Communication**: Interviewers care more about clarity and thought process than flawless code.
+- **Explicit Testing**: Walk through tests manually or via code to highlight debugging and validation skills.
+
+---
+
+This workflow ensures you're systematic, thorough, and clear, which are the top qualities interviewers look for.
+
+
 # Feedback: "Does the candidate also consider tradeoffs, optimizations, etc.?"
 
 ## 1. Approaching the Problem
